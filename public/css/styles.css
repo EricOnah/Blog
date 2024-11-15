@@ -34,6 +34,19 @@ body {
   font-weight: 500;
 }
 
+.post-btn {
+  border: none;
+  border-radius: 2px;
+  height: 30px;
+  border: 2px solid #78e6c1;
+  color: rgb(10, 10, 10) !important;
+}
+.post-btn:hover {
+  background-color: #78e6c1 !important;
+  color: rgb(65, 64, 64) !important;
+  transition: all 0.3s ease;
+}
+
 .footer {
   height: 60px;
   display: flex;

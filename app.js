@@ -30,5 +30,8 @@ app.get("/about", (req, res) => {
 app.get("/contact", (req, res) => {
   res.render("contact", { contactContent: contactContent });
 });
+app.get("/compose", (req, res) => {
+  res.render("compose");
+});
 
 app.listen(port, () => console.log(`listening on ${port}`));
