@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Pinyon+Script&family=Syne:wght@400..800&display=swap");
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: #f0ebeb;
+  padding: 0;
+  margin: 0;
+  font-family: "Geist", sans-serif;
+}
+
+.header__title {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  color: rgb(88, 88, 88) !important;
+  font-weight: 500;
+}
+
+.nav__item-link {
+  color: rgb(88, 88, 88) !important;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
+
+.nav__item-link:hover {
+  color: #78e6c1 !important;
+}
+
+.footer {
+  height: 60px;
+  display: flex;
+  width: 100vw;
+  background-color: #29c591;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  text-transform: capitalize;
+  color: white;
+}
+
+.footer__text {
+  margin: 0;
+}

@@ -11,8 +11,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 app.use(express.static(__dirname + "/public"));
 
+const homeStartingContent =
+  " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.";
+
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("home", { homeStartingContent: homeStartingContent });
 });
 
 app.listen(port, () => console.log(`listening on ${port}`));
