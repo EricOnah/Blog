@@ -1,11 +1,18 @@
 <%- include('partials/header'); %>
 
-    <div class="body container mt-4">
+    <div class="body-container container mt-4">
         <h1 class="page-title">Home</h1>
         <p>
             <%= homeStartingContent %>
         </p>
-
+        <% posts.forEach((post)=> { %>
+            <h1 class="page-title">
+                <%= post.title %>
+            </h1>
+            <p>
+                <%= post.body %>
+            </p>
+            <% }) %>
     </div>
 
     <%- include('partials/footer'); %>

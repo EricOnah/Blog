@@ -3,6 +3,11 @@
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+.body-container {
+  flex: 1; /*pus footer to bottom of page */
 }
 
 .header {
@@ -38,12 +43,8 @@ body {
   border: none;
   border-radius: 2px;
   height: 30px;
-  /* border: 2px solid #78e6c1; */
-  /* color: rgb(10, 10, 10) !important; */
 }
 .post-btn:hover {
-  /* background-color: #78e6c1 !important; */
-  /* color: rgb(65, 64, 64) !important; */
   transition: all 0.3s ease;
 }
 
@@ -71,12 +72,11 @@ body {
 .footer {
   height: 60px;
   display: flex;
-  width: 100vw;
+  width: 100%;
   background-color: #29c591;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  bottom: 0;
+  margin-top: 20px;
   text-transform: capitalize;
   color: white;
 }

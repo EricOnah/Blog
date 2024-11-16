@@ -1,0 +1,8 @@
+To render the contents of the post array, you use a forEach loop in the ejs.
+The tag for this process is what is tricky. You use a scriplet tag (<% %>) for the forEach loop.
+In the code block of the forEach loop you render the required html using <%= %> tag inside the html tag as
+html tags should not be nested inside an ejs tag.
+
+To position the footer at the bottom of the page and have show up only when you scroll to the bottom using
+flex-box - you set the body display to flex and give a min-height of 100v and flex-direction to column.
+Then give the body main content a flex: 1 value to push the footer to th bottom of the page.
