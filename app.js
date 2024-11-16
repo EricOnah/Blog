@@ -18,7 +18,7 @@ const aboutContent =
   " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.";
 const contactContent =
   " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.";
-
+const posts = [];
 app.get("/", (req, res) => {
   res.render("home", { homeStartingContent: homeStartingContent });
 });
@@ -35,7 +35,12 @@ app.get("/compose", (req, res) => {
 });
 
 app.post("/compose", (req, res) => {
-  console.log(req.body.publish);
+  let post = {};
+  post.title = req.body.postTitle;
+  post.body = req.body.postBody;
+  posts.push(post);
+  console.log(posts);
+  res.redirect("/");
 });
 
 app.listen(port, () => console.log(`listening on ${port}`));
