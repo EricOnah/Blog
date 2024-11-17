@@ -30,6 +30,15 @@ app.get("/about", (req, res) => {
   res.render("about", { aboutContent: aboutContent });
 });
 
+app.get("/posts/:post", (req, res) => {
+  const postName = req.params.post;
+  posts.forEach((post) => {
+    if (post.title === postName) {
+      console.log("Match found");
+    }
+  });
+});
+
 app.get("/contact", (req, res) => {
   res.render("contact", { contactContent: contactContent });
 });

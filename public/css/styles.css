@@ -39,6 +39,10 @@ body {
   font-weight: 500;
 }
 
+.new-post {
+  flex: 1;
+}
+
 .post-btn {
   border: none;
   border-radius: 2px;
