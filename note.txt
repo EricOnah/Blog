@@ -6,3 +6,11 @@ html tags should not be nested inside an ejs tag.
 To position the footer at the bottom of the page and have show up only when you scroll to the bottom using
 flex-box - you set the body display to flex and give a min-height of 100v and flex-direction to column.
 Then give the body main content a flex: 1 value to push the footer to th bottom of the page.
+
+lodash is a utility you can use to convert url parameters to lowercase so that you can match with the title of
+the post in the array or database.
+To import lodash after installing with npm you use <import _ from "lodash">
+To use in your code - _.kebabCase(string).replace(/-/g, '') this remove all the spaces and special character from
+the string and also return the string in lowercase
+
+You can also do the above with plain JS - string.toLowerCase().replace(/[^a-z0-9]/g, '');

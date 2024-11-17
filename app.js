@@ -1,6 +1,7 @@
 import express from "express";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import _ from "lodash";
 
 const app = express();
 app.set("view engine", "ejs");
@@ -31,11 +32,15 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/posts/:post", (req, res) => {
-  const postName = req.params.post;
+  const postName = _.kebabCase(req.params.post).replace(/-/g, "");
   posts.forEach((post) => {
-    const postTitle = post.title;
-    if (postTitle.toLocaleLowerCase() === postName) {
+    // const postTitle = _.kebabCase(post.title).replace(/-/g, "");
+    const postTitle = post.title.toLowerCase().replace(/[^a-z0-9]/g, "");
+    if (postTitle === postName) {
       console.log("match found");
+    } else {
+      let trimTest = "test 1";
+      console.log(postName, "This is the trim test " + trimTest);
     }
   });
 });
