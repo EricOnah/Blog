@@ -33,8 +33,9 @@ app.get("/about", (req, res) => {
 app.get("/posts/:post", (req, res) => {
   const postName = req.params.post;
   posts.forEach((post) => {
-    if (post.title === postName) {
-      console.log("Match found");
+    const postTitle = post.title;
+    if (postTitle.toLocaleLowerCase() === postName) {
+      console.log("match found");
     }
   });
 });
