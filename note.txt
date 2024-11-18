@@ -13,4 +13,9 @@ To import lodash after installing with npm you use <import _ from "lodash">
 To use in your code - _.kebabCase(string).replace(/-/g, '') this remove all the spaces and special character from
 the string and also return the string in lowercase
 
-You can also do the above with plain JS - string.toLowerCase().replace(/[^a-z0-9]/g, '');
+You can also do the above with plain JS - string.toLowerCase().replace(/[^a-z0-9]/g, ''); This is preferred for
+performance reasons.
+
+After adding the single post page and route, custom css failed to load on the single post page due to error in path
+to solve this I linked to the css again using a path that will be correct when we are on the post page -
+<<link rel="stylesheet" href="../css/styles.css">> 

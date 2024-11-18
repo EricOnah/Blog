@@ -36,13 +36,15 @@ app.get("/posts/:post", (req, res) => {
   posts.forEach((post) => {
     // const postTitle = _.kebabCase(post.title).replace(/-/g, "");
     const postTitle = post.title.toLowerCase().replace(/[^a-z0-9]/g, "");
+    const postBody = post.body;
     if (postTitle === postName) {
-      console.log("match found");
+      res.render("post", { postTitle: post.title, postBody: postBody });
+      return;
     } else {
-      let trimTest = "test 1";
-      console.log(postName, "This is the trim test " + trimTest);
+      console.log("Error");
     }
   });
+  // res.render("post");
 });
 
 app.get("/contact", (req, res) => {

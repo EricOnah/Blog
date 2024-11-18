@@ -37,6 +37,11 @@ body {
 .page-title {
   font-family: "Geist", sans-serif;
   font-weight: 500;
+  text-transform: capitalize;
+}
+
+.posts {
+  padding: 0 !important;
 }
 
 .new-post {
