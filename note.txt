@@ -19,3 +19,6 @@ performance reasons.
 After adding the single post page and route, custom css failed to load on the single post page due to error in path
 to solve this I linked to the css again using a path that will be correct when we are on the post page -
 <<link rel="stylesheet" href="../css/styles.css">> 
+
+CRUD Operation: It is very important to always add the where (The condition for the operation) especially when
+editing or deleting data from a table.
