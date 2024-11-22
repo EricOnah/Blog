@@ -22,3 +22,13 @@ to solve this I linked to the css again using a path that will be correct when w
 
 CRUD Operation: It is very important to always add the where (The condition for the operation) especially when
 editing or deleting data from a table.
+
+MongoDB installation on windows: First you download MongoDB community server. Install it following te prompt.
+Select complete for full installation. When you see MongoDB shell installation link during the installation, 
+click on it. While it loads in the browser, finish with installing mongoDB. After installing mongoDB, download
+mongoDB. It comes in a zip file so extract to your mongoDB folder in program files. copy the path to the bin of 
+the mongoDB shell folder and add it to your system environmental variables.
+Open settings type env, select the first option which is usually the system environment variables. In the click on
+environment variables, click on path in system environment variables and click edit. 
+Click add new and past the path to the mongoDB shell you copied.
+You can also add a path to the mongoDB bin folder to checkout mongod and mongos.
