@@ -32,3 +32,7 @@ Open settings type env, select the first option which is usually the system envi
 environment variables, click on path in system environment variables and click edit. 
 Click add new and past the path to the mongoDB shell you copied.
 You can also add a path to the mongoDB bin folder to checkout mongod and mongos.
+
+MongoDB error message "connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017"
+This means that mongodb service did not start well. To solve this, you go to "services.msc" To get here, you 
+windows run command and type in "services.msc" Once it loads find mongodb and right click on it to start service.
