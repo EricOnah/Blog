@@ -36,3 +36,6 @@ You can also add a path to the mongoDB bin folder to checkout mongod and mongos.
 MongoDB error message "connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017"
 This means that mongodb service did not start well. To solve this, you go to "services.msc" To get here, you 
 windows run command and type in "services.msc" Once it loads find mongodb and right click on it to start service.
+
+When using .env file to store your database connection string, you should configure dotenv <dotenv.cong()> before declaring the
+connection variables

@@ -2,15 +2,33 @@ import express from "express";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import _ from "lodash";
+import { mongoose, connect, Schema, model } from "mongoose";
+// import { mongoose, connect, model, Schema } from "mongoose";
+// import dotenv from "dotenv";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-app.set("view engine", "ejs");
 const port = process.env.PORT || 3000;
+const url = process.env.MONGODB_URI;
+app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 app.use(express.static(__dirname + "/public"));
+// configure dotenv
+
+try {
+  main();
+} catch (error) {
+  console.log("Error: ", error);
+}
+
+async function main() {
+  await connect(url);
+  console.log("Connected to MongoDB");
+}
 
 const homeStartingContent =
   " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.";
