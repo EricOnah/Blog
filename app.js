@@ -98,33 +98,32 @@ app.get("/about", (req, res) => {
   const about = Post.findOne({ title: "About" }).exec();
   about.then((data) => {
     let aboutContent = data.content;
-    res.render("about", { aboutContent: aboutContent });
+    let aboutTitle = data.title;
+    res.render("about", { aboutTitle: aboutTitle, aboutContent: aboutContent });
   });
 });
 
 app.get("/posts/:post", (req, res) => {
   const postName = _.kebabCase(req.params.post).replace(/-/g, "");
-  console.log(req.params);
-  console.log("Post Name: " + postName);
   posts.forEach((post) => {
-    // const postTitle = _.kebabCase(post.title).replace(/-/g, "");
     const postTitle = post.title.toLowerCase().replace(/[^a-z0-9]/g, "");
     const postBody = post.content;
-    console.log("Post Title: " + postTitle, "Post body: " + postBody);
-
     if (postTitle === postName) {
       res.render("post", { postTitle: post.title, postBody: postBody });
-      return;
-    } else {
-      console.log("Error");
     }
   });
-  // res.render("post");
 });
 
 app.get("/contact", (req, res) => {
-  const contactContent = Post.findOne({ title: "Contact" }).content;
-  res.render("contact", { contactContent: contactContent });
+  const contact = Post.findOne({ title: "Contact" }).exec();
+  contact.then((data) => {
+    let contactContent = data.content;
+    let contactTitle = data.title;
+    res.render("contact", {
+      contactTitle: contactTitle,
+      contactContent: contactContent,
+    });
+  });
 });
 app.get("/compose", (req, res) => {
   res.render("compose");
