@@ -1,6 +1,6 @@
 </div>
 <footer class="footer">
-    <p class="footer__text">© 2024 made by Eric</p>
+    <p class="footer__text">© <span class="year">2024</span> made by Eric</p>
 </footer>
 
 
@@ -9,7 +9,7 @@
         return new Date().getFullYear();
     }
 
-    document.querySelector('.footer__text').textContent = getCurrentYear();
+    document.querySelector('.year').textContent = getCurrentYear();
 </script>
 </body>
 
