@@ -132,13 +132,18 @@ app.post("/compose", async (req, res) => {
   const title = req.body.postTitle;
   const content = req.body.postBody;
 
-  const post = new Post({
-    _id: generateId(),
-    title: title,
-    content: content,
-  });
-  await post.save();
-  res.redirect("/");
+  if (title) {
+    const post = new Post({
+      _id: generateId(),
+      title: title,
+      content: content,
+    });
+    await post.save();
+    res.redirect("/");
+  } else {
+    console.log("Please enter a title.");
+    res.redirect("/compose");
+  }
 });
 
 app.post("/delete", (req, res) => {

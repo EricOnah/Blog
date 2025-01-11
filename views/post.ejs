@@ -10,11 +10,12 @@
 
     </div>
 
-    <div class="delete-post">
+    <div class="post">
         <form action="/delete" method="POST">
             <input type="hidden" name="postTitle" value="<%= postTitle %>">
             <button type="submit" class="btn btn-danger">Delete Post</button>
         </form>
+        <a href="/edit/<%= postTitle %>" class="btn post-btn">Edit Post</a>
     </div>
 
 

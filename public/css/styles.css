@@ -98,6 +98,12 @@ body {
   color: white;
 }
 
+.post {
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .footer__text {
   margin: 0;
 }
