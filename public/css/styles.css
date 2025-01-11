@@ -55,11 +55,13 @@ body {
 
 .post-btn {
   border: none;
-  border-radius: 2px;
-  height: 30px;
+  padding: 10px 20px;
+  background-color: #78e6c1;
+  transition: all 0.3s ease;
 }
 .post-btn:hover {
-  transition: all 0.3s ease;
+  transform: scale(1.05);
+  background-color: #78e6c1;
 }
 
 .post-publish {
