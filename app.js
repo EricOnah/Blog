@@ -152,4 +152,43 @@ app.post("/delete", (req, res) => {
   res.redirect("/");
 });
 
+app.get("/edit/:post", (req, res) => {
+  const postTitle = req.params.post;
+  const post = Post.findOne({ title: postTitle }).exec();
+  post.then((data) => {
+    let postContent = data.content;
+    let postTitle = data.title;
+    let postId = data._id;
+    res.render("edit", {
+      postTitle: postTitle,
+      postContent: postContent,
+      postId: postId,
+    });
+  });
+});
+
+app.post("/update", (req, res) => {
+  const updatedTitle = req.body.postTitle;
+  const updatedContent = req.body.postBody;
+  const id = req.body.postId;
+  async function update() {
+    try {
+      const filter = { _id: id };
+      const options = { upsert: true };
+      const newValues = {
+        $set: { title: `${updatedTitle}`, content: `${updatedContent}` },
+      };
+      const result = await Post.updateOne(filter, newValues, options);
+      console.log(
+        `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`
+      );
+      res.redirect("/");
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  update();
+});
+
 app.listen(port, () => console.log(`listening on ${port}`));

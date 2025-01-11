@@ -1,0 +1,14 @@
+<%- include('partials/header'); %>
+
+    <form action="/update" method="post">
+        <label for="postTitle" class="post-subtitle">Title</label>
+        <input type="text" name="postTitle" value="<%= postTitle %>" id="postTitle" class="container post-publish"
+            autocomplete="off">
+        <label for="postBody" class="post-subtitle">Post</label>
+        <textarea name="postBody" id="postBody" class="container text-area"
+            autocomplete="off"><%= postContent %></textarea>
+        <input type="hidden" name="postId" value="<%= postId %>">
+        <button type="submit" class="btn post-btn">Update</button>
+    </form>
+
+    <%- include('partials/footer'); %>

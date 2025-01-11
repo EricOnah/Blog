@@ -42,3 +42,14 @@ connection variables
 
 await MyModel.find({}); await MyModel.find({ name: 'john', age: { $gte: 18 } }).exec(); returns a promise so you need
 a .then(()=>{}) to get to the data returned.
+
+to update the content in the database you can use an async function like 
+
+    const filter = { _id: id };
+    const options = { upsert: true };
+    const newValues = {
+        $set: { title: `${updatedTitle}`, content: `${updatedContent}` },
+      };
+    const result = await Post.updateOne(filter, newValues, options);
+
+link: https://www.mongodb.com/docs/drivers/node/current/usage-examples/updateOne/
