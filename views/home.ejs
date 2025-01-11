@@ -3,15 +3,21 @@
     <div class="posts container">
         <h1 class="page-title mb-5">Home</h1>
         <% posts.forEach((post)=> { %>
-            <h1 class="post-title">
-                <%= post.title %>
-            </h1>
 
-            <% let content=post.content.slice(0, 100) %>
-                <p>
-                    <%= content %>...
-                        <a href="/posts/<%= post.title %>">Read More</a </p>
-                        <% }) %>
+            <% if(post.title){ %>
+                <h1 class="post-title">
+                    <%= post.title %>
+                </h1>
+                <% } %>
+
+                    <% if(post.content){ %>
+                        <% let content=post.content.slice(0, 100) %>
+                            <p>
+                                <%= content %>...
+                                    <a href="/posts/<%= post.title %>">Read More</a </p>
+                                    <% }}) %>
+
+
     </div>
     <div class="addpost">
         <a href="/compose" class="btn post-btn">Add Post</a>

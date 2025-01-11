@@ -187,7 +187,6 @@ app.post("/update", (req, res) => {
       console.log(err);
     }
   }
-
   update();
 });
 
