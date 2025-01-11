@@ -37,6 +37,7 @@ body {
 .post-title {
   font-family: "Geist", sans-serif;
   font-weight: 500;
+  font-size: 1.3rem;
   text-transform: capitalize;
 }
 

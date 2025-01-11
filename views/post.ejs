@@ -7,6 +7,14 @@
         <p>
             <%= postBody %>
         </p>
+
+    </div>
+
+    <div class="delete-post">
+        <form action="/delete" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-danger">Delete Post</button>
+        </form>
     </div>
 
 

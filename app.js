@@ -101,7 +101,8 @@ app.get("/about", (req, res) => {
   });
 });
 
-app.get("/posts/:post", (req, res) => {
+app.get("/posts/:post", async (req, res) => {
+  const posts = await Post.find({});
   const postName = _.kebabCase(req.params.post).replace(/-/g, "");
   posts.forEach((post) => {
     const postTitle = post.title.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -110,6 +111,11 @@ app.get("/posts/:post", (req, res) => {
       res.render("post", { postTitle: post.title, postBody: postBody });
     }
   });
+});
+
+app.post("/delete", (req, res) => {
+  console.log("Post deleted ");
+  res.redirect("/");
 });
 
 app.get("/contact", (req, res) => {
