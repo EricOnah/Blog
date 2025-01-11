@@ -1,6 +1,7 @@
 import express from "express";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import path from "path";
 import _ from "lodash";
 import { mongoose, connect, Schema, model } from "mongoose";
 import dotenv from "dotenv";
