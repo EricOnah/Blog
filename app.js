@@ -3,11 +3,9 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import _ from "lodash";
 import { mongoose, connect, Schema, model } from "mongoose";
-// import { mongoose, connect, model, Schema } from "mongoose";
-// import dotenv from "dotenv";
 import dotenv from "dotenv";
-dotenv.config();
 
+dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 const url = process.env.MONGODB_URI;
@@ -17,8 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 app.use(express.static(__dirname + "/public"));
-// configure dotenv
 
+// connect mongodb
 try {
   main();
 } catch (error) {
@@ -29,6 +27,61 @@ async function main() {
   await connect(url);
   console.log("Connected to MongoDB");
 }
+// create schema and model
+
+const postSchema = new Schema(
+  {
+    _id: Number,
+    title: String,
+    content: String,
+    date: { type: Date, default: Date.now },
+  },
+  { _id: false }
+);
+const Post = model("Post", postSchema);
+
+const postsInDb = await Post.find({});
+
+let counter = 0;
+function generateId() {
+  if (postsInDb.length === 0) {
+    counter++;
+    return counter;
+  } else if (postsInDb.length > 0) {
+    const maxId = _.maxBy(postsInDb, "id").id;
+    counter = +maxId + 1; //using lodash to return the max id number in our blog database
+
+    // let postIdArray = [];
+    // postsInDb.forEach((post) => {
+    //   postIdArray.push(post._id);
+    // });
+
+    // let maxId = Math.max(...postIdArray); //hard coding the max id number
+    // counter = maxId + 1;
+    return counter;
+  }
+}
+
+if (postsInDb.length === 0) {
+  let id1 = generateId();
+  const post1 = new Post({
+    _id: id1,
+    title: "Welcome to my blog!",
+    content: "test post 1",
+  });
+
+  await post1.save();
+}
+
+let id = generateId();
+
+const post3 = new Post({
+  _id: id,
+  title: "Welcome to my blog!",
+  content: "test post 1",
+});
+
+await post3.save();
 
 const homeStartingContent =
   " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.";
