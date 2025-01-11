@@ -190,4 +190,6 @@ app.post("/update", (req, res) => {
   update();
 });
 
-app.listen(port, () => console.log(`listening on ${port}`));
+// app.listen(port, () => console.log(`listening on ${port}`));
+
+export default app;
