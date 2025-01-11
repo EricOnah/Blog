@@ -1,6 +1,6 @@
 <%- include('partials/header'); %>
 
-    <div class="posts container mt-4">
+    <div class="posts mt-4">
         <h1 class="post-title">
             <%= postTitle %>
         </h1>
@@ -8,15 +8,16 @@
             <%= postBody %>
         </p>
 
+        <div class="post">
+            <form action="/delete" method="POST">
+                <input type="hidden" name="postTitle" value="<%= postTitle %>">
+                <button type="submit" class="btn btn-danger">Delete Post</button>
+            </form>
+            <a href="/edit/<%= postTitle %>" class="btn post-btn">Edit Post</a>
+        </div>
+
     </div>
 
-    <div class="post">
-        <form action="/delete" method="POST">
-            <input type="hidden" name="postTitle" value="<%= postTitle %>">
-            <button type="submit" class="btn btn-danger">Delete Post</button>
-        </form>
-        <a href="/edit/<%= postTitle %>" class="btn post-btn">Edit Post</a>
-    </div>
 
 
 

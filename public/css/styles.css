@@ -48,6 +48,7 @@ body {
 
 .posts {
   padding: 0 !important;
+  max-width: 700px;
 }
 
 .new-post {

@@ -93,7 +93,7 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  const about = Post.findOne({ title: "About" }).exec();
+  const about = Post.findOne({ _id: 2 }).exec();
   about.then((data) => {
     let aboutContent = data.content;
     let aboutTitle = data.title;
@@ -114,7 +114,7 @@ app.get("/posts/:post", async (req, res) => {
 });
 
 app.get("/contact", (req, res) => {
-  const contact = Post.findOne({ title: "Contact" }).exec();
+  const contact = Post.findOne({ _id: 3 }).exec();
   contact.then((data) => {
     let contactContent = data.content;
     let contactTitle = data.title;
