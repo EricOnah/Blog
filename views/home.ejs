@@ -2,18 +2,15 @@
 
     <div class="posts container">
         <h1 class="page-title mb-5">Home</h1>
-        <p>
-            <%= homeStartingContent %>
-        </p>
         <% posts.forEach((post)=> { %>
-            <h1 class="page-title">
+            <h1 class="post-title">
                 <%= post.title %>
             </h1>
 
             <% let content=post.content.slice(0, 100) %>
                 <p>
                     <%= content %>...
-                        <a href="/posts/<%= post.content %>">Read More</a </p>
+                        <a href="/posts/<%= post.title %>">Read More</a </p>
                         <% }) %>
     </div>
 

@@ -39,3 +39,6 @@ windows run command and type in "services.msc" Once it loads find mongodb and ri
 
 When using .env file to store your database connection string, you should configure dotenv <dotenv.cong()> before declaring the
 connection variables
+
+await MyModel.find({}); await MyModel.find({ name: 'john', age: { $gte: 18 } }).exec(); returns a promise so you need
+a .then(()=>{}) to get to the data returned.

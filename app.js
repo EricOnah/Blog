@@ -90,23 +90,28 @@ if (postsInDb.length === 0) {
 const posts = await Post.find({});
 
 app.get("/", (req, res) => {
-  const homeStartingContent = Post.findOne({ title: "Home" }).content;
-  res.render("home", {
-    homeStartingContent: homeStartingContent,
-    posts: posts,
-  });
+  const home = Post.find({ title: "Home" }).exec();
+  res.render("home", { posts: posts });
 });
 
 app.get("/about", (req, res) => {
-  res.render("about", { aboutContent: aboutContent });
+  const about = Post.findOne({ title: "About" }).exec();
+  about.then((data) => {
+    let aboutContent = data.content;
+    res.render("about", { aboutContent: aboutContent });
+  });
 });
 
 app.get("/posts/:post", (req, res) => {
   const postName = _.kebabCase(req.params.post).replace(/-/g, "");
+  console.log(req.params);
+  console.log("Post Name: " + postName);
   posts.forEach((post) => {
     // const postTitle = _.kebabCase(post.title).replace(/-/g, "");
     const postTitle = post.title.toLowerCase().replace(/[^a-z0-9]/g, "");
-    const postBody = post.body;
+    const postBody = post.content;
+    console.log("Post Title: " + postTitle, "Post body: " + postBody);
+
     if (postTitle === postName) {
       res.render("post", { postTitle: post.title, postBody: postBody });
       return;
@@ -118,6 +123,7 @@ app.get("/posts/:post", (req, res) => {
 });
 
 app.get("/contact", (req, res) => {
+  const contactContent = Post.findOne({ title: "Contact" }).content;
   res.render("contact", { contactContent: contactContent });
 });
 app.get("/compose", (req, res) => {
@@ -125,10 +131,16 @@ app.get("/compose", (req, res) => {
 });
 
 app.post("/compose", (req, res) => {
-  let post = {};
-  post.title = req.body.postTitle;
-  post.body = req.body.postBody;
-  posts.push(post);
+  // let post = {};
+  // post.title = req.body.postTitle;
+  // post.body = req.body.postBody;
+  // posts.push(post);
+
+  const post = new Post({
+    _id: generateId(),
+    title: req.body.postTitle,
+    content: req.body.postBody,
+  });
   res.redirect("/");
 });
 
