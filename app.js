@@ -63,34 +63,31 @@ function generateId() {
 }
 
 if (postsInDb.length === 0) {
-  let id1 = generateId();
-  const post1 = new Post({
-    _id: id1,
-    title: "Welcome to my blog!",
-    content: "test post 1",
+  const homeStartingContent = new Post({
+    _id: generateId(),
+    title: "Home start content",
+    content:
+      " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.",
   });
 
-  await post1.save();
+  const aboutContent = new Post({
+    _id: generateId(),
+    title: "About content",
+    content:
+      " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.",
+  });
+
+  const contactContent = new Post({
+    _id: generateId(),
+    title: "Contact content",
+    content:
+      " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.",
+  });
+
+  Post.insertMany([homeStartingContent, aboutContent, contactContent]);
 }
 
-let id = generateId();
-
-const post3 = new Post({
-  _id: id,
-  title: "Welcome to my blog!",
-  content: "test post 1",
-});
-
-await post3.save();
-
-const homeStartingContent =
-  " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.";
-
-const aboutContent =
-  " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.";
-const contactContent =
-  " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.";
-const posts = [];
+const post = [];
 app.get("/", (req, res) => {
   res.render("home", {
     homeStartingContent: homeStartingContent,
