@@ -3,6 +3,14 @@
     <p class="footer__text">© 2024 made by Eric</p>
 </footer>
 
+
+<script>
+    function getCurrentYear() {
+        return new Date().getFullYear();
+    }
+
+    document.querySelector('.footer__text').textContent = getCurrentYear();
+</script>
 </body>
 
 </html>
