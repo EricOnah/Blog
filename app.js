@@ -10,12 +10,12 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 const url = process.env.MONGODB_URI;
-app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+app.set("views", path.join(__dirname, "views"));
 app.use(express.static(__dirname + "/public"));
 
 // connect mongodb
