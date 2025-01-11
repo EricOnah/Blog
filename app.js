@@ -87,10 +87,8 @@ if (postsInDb.length === 0) {
   Post.insertMany([homeStartingContent, aboutContent, contactContent]);
 }
 
-const posts = await Post.find({});
-
-app.get("/", (req, res) => {
-  const home = Post.find({ title: "Home" }).exec();
+app.get("/", async (req, res) => {
+  const posts = await Post.find({});
   res.render("home", { posts: posts });
 });
 
@@ -129,17 +127,16 @@ app.get("/compose", (req, res) => {
   res.render("compose");
 });
 
-app.post("/compose", (req, res) => {
-  // let post = {};
-  // post.title = req.body.postTitle;
-  // post.body = req.body.postBody;
-  // posts.push(post);
+app.post("/compose", async (req, res) => {
+  const title = req.body.postTitle;
+  const content = req.body.postBody;
 
   const post = new Post({
     _id: generateId(),
-    title: req.body.postTitle,
-    content: req.body.postBody,
+    title: title,
+    content: content,
   });
+  await post.save();
   res.redirect("/");
 });
 
