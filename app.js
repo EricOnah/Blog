@@ -113,11 +113,6 @@ app.get("/posts/:post", async (req, res) => {
   });
 });
 
-app.post("/delete", (req, res) => {
-  console.log("Post deleted ");
-  res.redirect("/");
-});
-
 app.get("/contact", (req, res) => {
   const contact = Post.findOne({ title: "Contact" }).exec();
   contact.then((data) => {
@@ -143,6 +138,12 @@ app.post("/compose", async (req, res) => {
     content: content,
   });
   await post.save();
+  res.redirect("/");
+});
+
+app.post("/delete", (req, res) => {
+  const postTitle = req.body.postTitle;
+  Post.deleteOne({ title: postTitle }).exec();
   res.redirect("/");
 });
 
