@@ -65,21 +65,21 @@ function generateId() {
 if (postsInDb.length === 0) {
   const homeStartingContent = new Post({
     _id: generateId(),
-    title: "Home start content",
+    title: "Home",
     content:
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.",
   });
 
   const aboutContent = new Post({
     _id: generateId(),
-    title: "About content",
+    title: "About",
     content:
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.",
   });
 
   const contactContent = new Post({
     _id: generateId(),
-    title: "Contact content",
+    title: "Contact",
     content:
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ratione officiis animi sequi quos reprehenderit quasi ex omnis maiores, assumenda molestiae, laudantium incidunt, obcaecati asperiores suscipit error rerum! Sapiente, minus.",
   });
@@ -87,8 +87,10 @@ if (postsInDb.length === 0) {
   Post.insertMany([homeStartingContent, aboutContent, contactContent]);
 }
 
-const post = [];
+const posts = await Post.find({});
+
 app.get("/", (req, res) => {
+  const homeStartingContent = Post.findOne({ title: "Home" }).content;
   res.render("home", {
     homeStartingContent: homeStartingContent,
     posts: posts,

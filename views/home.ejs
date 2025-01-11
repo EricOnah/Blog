@@ -1,7 +1,7 @@
 <%- include('partials/header'); %>
 
-    <div class="posts container mt-4">
-        <h1 class="page-title">Home</h1>
+    <div class="posts container">
+        <h1 class="page-title mb-5">Home</h1>
         <p>
             <%= homeStartingContent %>
         </p>
@@ -10,10 +10,10 @@
                 <%= post.title %>
             </h1>
 
-            <% let content=post.body.slice(0, 100) %>
+            <% let content=post.content.slice(0, 100) %>
                 <p>
                     <%= content %>...
-                        <a href="/posts/<%= post.title %>">Read More</a </p>
+                        <a href="/posts/<%= post.content %>">Read More</a </p>
                         <% }) %>
     </div>
 
